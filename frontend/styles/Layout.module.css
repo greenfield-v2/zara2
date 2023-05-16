@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:wght@400;600&display=swap%27');
+.app{
+  background: white;
+  display: flex;
+  color: black;
+  justify-content: center;
+
+}
+/* /.container{
+  margin-top: 60px;
+  margin-bottom: 50px;
+  margin-left: 400px;
+  width: 100%;
+  flex-wrap: wrap;
+}/ */
