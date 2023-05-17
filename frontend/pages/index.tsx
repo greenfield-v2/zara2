@@ -3,10 +3,10 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import "../styles/Layout.module.css";
 
 {/*import img1 from "./images/img1.jpg"
-import img2 from "./images/img2.jpg"
-import img3 from "./images/img3.jpg"
-import img4 from "./images/img4.jpg"
-import img5 from "./images/img5.jpg"*/}
+// import img2 from "./images/img2.jpg"
+// import img3 from "./images/img3.jpg"
+// import img4 from "./images/img4.jpg"
+// import img5 from "./images/img5.jpg"*/}
 export default function Home() {
   const imagePaths = ["https://besthqwallpapers.com/Uploads/23-1-2021/153539/zara-logo-brown-plaster-background-zara-3d-logo-brands-zara-emblem.jpg"
   ,"https://www.swaggermagazine.com/home/wp-content/uploads/2023/03/Zara-HomePage-Landscape_W-1.jpg",
