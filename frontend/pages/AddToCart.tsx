@@ -16,8 +16,10 @@ interface Props {
   products: Product[];
 }
 
-const AddToCart: React.FC<Props> = ({ products }) => {
+const AddToCart: React.FC<Props> = ({ products } : any ) => {
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
+const [data, setdata]=useState([])
+
 
   const handleAddToCart = (product: Product) => {
     const existingCartItem = cartItems.find((item) => item.id === product.id);
@@ -37,7 +39,7 @@ const AddToCart: React.FC<Props> = ({ products }) => {
     <div>
       <h2>Products</h2>
       <ul>
-        {products.map((product) => (
+        {products.map(({ product } : any) => (
           <li key={product.id}>
             {product.clothesName} - ${product.price}
             <button onClick={() => handleAddToCart(product)}>Add to Cart</button>
