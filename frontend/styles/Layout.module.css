@@ -12,4 +12,33 @@
   margin-left: 400px;
   width: 100%;
   flex-wrap: wrap;
-}/ */
+}*/
+
+.slideshow-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.slide-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.slide-enter-active {
+  opacity: 1;
+  transform: translateX(0%);
+  transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+}
+
+.slide-exit {
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+.slide-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+}
