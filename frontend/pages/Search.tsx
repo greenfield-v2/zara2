@@ -1,4 +1,3 @@
-
 import React from "react";
 import { MDBCol, MDBInput } from "mdbreact";
 import styles from "../styles/Layout.module.css";
