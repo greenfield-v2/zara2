@@ -1,11 +1,18 @@
-import React from 'react'
 
-const Search = () => {
+import React from "react";
+import { MDBCol, MDBInput } from "mdbreact";
+import styles from "../styles/Layout.module.css";
+
+const SearchPage: React.FC = () => {
   return (
-    <div>
-      hello from search
-    </div>
-  )
+    <MDBCol md="10">
+      <MDBInput
+  hint="Search"
+  type="text"
+  containerClass={`${styles.searchInput}`}
+/>
+    </MDBCol>
+  );
 }
 
-export default Search
+export default SearchPage;

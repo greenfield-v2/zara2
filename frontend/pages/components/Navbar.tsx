@@ -25,7 +25,6 @@ const NavBar = () => {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
-              {/*When the user clicks on the Link*/}
               <Nav.Link
                 href="/"
                 style={{
