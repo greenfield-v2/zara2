@@ -6,13 +6,22 @@
   justify-content: center;
 
 }
-/* /.container{
-  margin-top: 60px;
-  margin-bottom: 50px;
-  margin-left: 400px;
+.container{
+  
+  margin-top: 10px;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
-}*/
+}
+.clothescard{
+  max-width: 350px;
+  min-width: 150px;
+  max-height: 700px;
+  min-height: 270px;
+  box-shadow: 10px 5px 5px rgb(128, 50, 50);
+  transition: all 0.3s ease;
+}
 
 .slideshow-container {
   position: relative;
