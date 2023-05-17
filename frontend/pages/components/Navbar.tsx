@@ -1,3 +1,9 @@
+import React from "react";
+//import Link from "next/link";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+
 import React from 'react'
 import Link from 'next/link'
 import Container from 'react-bootstrap/Container';
