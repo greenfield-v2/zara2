@@ -6,10 +6,61 @@
   justify-content: center;
 
 }
-/* /.container{
-  margin-top: 60px;
-  margin-bottom: 50px;
-  margin-left: 400px;
+.container{
+  
+  margin-top: 10px;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
-}/ */
+}
+.clothescard{
+  max-width: 350px;
+  min-width: 150px;
+  max-height: 700px;
+  min-height: 270px;
+  box-shadow: 10px 5px 5px rgb(128, 50, 50);
+  transition: all 0.3s ease;
+}
+
+.slideshow-container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.slide-enter {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.slide-enter-active {
+  opacity: 1;
+  transform: translateX(0%);
+  transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+}
+
+.slide-exit {
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+.slide-exit-active {
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 300px;
+  background-color: #f2f2f2;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.sidebar-visible {
+  margin-left: 0;
+}
