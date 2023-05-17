@@ -78,17 +78,6 @@ COLLATE = utf8mb4_0900_ai_ci;
 
 USE `mydb` ;
 
--- -----------------------------------------------------
--- Placeholder table for view `mydb`.`view1`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `mydb`.`view1` (`id` INT);
-
--- -----------------------------------------------------
--- View `mydb`.`view1`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `mydb`.`view1`;
-USE `mydb`;
-
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
