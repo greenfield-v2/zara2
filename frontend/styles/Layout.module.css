@@ -42,3 +42,16 @@
   transform: translateX(-100%);
   transition: opacity 500ms ease-in-out, transform 500ms ease-in-out;
 }
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 300px;
+  background-color: #f2f2f2;
+  transition: margin-left 0.3s ease-in-out;
+}
+
+.sidebar-visible {
+  margin-left: 0;
+}

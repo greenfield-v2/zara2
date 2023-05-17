@@ -3,6 +3,7 @@ import Link from 'next/link'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
+import Sidebar from './Sidebar';
 
 
 const NavBar = () => {
@@ -11,7 +12,9 @@ const NavBar = () => {
     <div>
        
       <Navbar bg="white" expand="lg" variant='light'  className='navbares'>
+      
               <Container fluid>
+              <Sidebar/>
                 <Navbar.Brand href="#" >
                 
                 <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Zara_Logo.svg/2560px-Zara_Logo.svg.png" style={{marginLeft:"100px",width:"200px",height:"90px"}}/></Navbar.Brand>
@@ -33,6 +36,7 @@ const NavBar = () => {
 
                 </Navbar.Collapse>
               </Container>
+              
             </Navbar>
             </div>
           )
