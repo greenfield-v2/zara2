@@ -1,12 +1,9 @@
-
-
-
-import React from 'react'
-import Link from 'next/link'
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import Sidebar from './Sidebar';
+import React from "react";
+import Link from "next/link";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import Sidebar from "./Sidebar";
 
 const NavBar = () => {
   return (
@@ -55,7 +52,16 @@ const NavBar = () => {
               {" "}
               RECHERCHER{" "}
             </Nav.Link>
-
+            <Nav.Link
+              href="/signup"
+              style={{ fontFamily: "Sans-serif", fontSize: "15px" }}
+            >
+              SE CONNECTER
+            </Nav.Link>
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/118/118089.png"
+              style={{ marginLeft: "80px", width: "40px", height: "40px" }}
+            />
             <Nav.Link
               href="#action1"
               style={{ fontFamily: "Sans-serif", fontSize: "15px" }}
@@ -72,14 +78,4 @@ const NavBar = () => {
     </div>
   );
 };
-export default NavBar ;
-                  <Nav.Link href="/signup" style={{ fontFamily:"Sans-serif",fontSize:"15px"}} >SE CONNECTER</Nav.Link>
-                  <img src="https://cdn-icons-png.flaticon.com/512/118/118089.png" style={{marginLeft:"80px",width:"40px",height:"40px"}}/>
-
-                </Navbar.Collapse>
-              </Container>
-            </Navbar>
-            </div>
-          )
-}
-  
+export default NavBar;
