@@ -25,6 +25,7 @@ const NavBar = () => {
               style={{ maxHeight: "100px" }}
               navbarScroll
             >
+              {/*When the user clicks on the Link */}
               <Nav.Link
                 href="/"
                 style={{
@@ -38,6 +39,7 @@ const NavBar = () => {
                 HOME{" "}
               </Nav.Link>
             </Nav>
+
             <Nav.Link
               href="/Search"
               style={{
@@ -48,32 +50,17 @@ const NavBar = () => {
               }}
             >
               {" "}
-              RECHERCHER{" "}
+             SEARCH{" "}
             </Nav.Link>
-            <Nav.Link
-              href="/signup"
-              style={{ fontFamily: "Sans-serif", fontSize: "15px" }}
-            >
-              SE CONNECTER
-            </Nav.Link>
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/118/118089.png"
-              style={{ marginLeft: "80px", width: "40px", height: "40px" }}
-            />
-            <Nav.Link
-              href="#action1"
-              style={{ fontFamily: "Sans-serif", fontSize: "15px" }}
-            >
-              SE CONNECTER
-            </Nav.Link>
-            <img
-              src="https://cdn-icons-png.flaticon.com/512/118/118089.png"
-              style={{ marginLeft: "80px", width: "40px", height: "40px" }}
-            />
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
-    </div>
-  );
-};
-export default NavBar;
+
+                  <Nav.Link href="#action1" style={{ fontFamily:"Sans-serif",fontSize:"15px"}} >LOG IN</Nav.Link>
+                  <img src="https://cdn-icons-png.flaticon.com/512/118/118089.png" style={{marginRight:"70px",marginLeft:"80px",width:"30px",height:"30px"}}/>
+
+                </Navbar.Collapse>
+              </Container>
+            </Navbar>
+            </div>
+          )
+}
+  
+export default NavBar

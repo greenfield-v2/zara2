@@ -13,7 +13,7 @@ const Sidebar: React.FC = () => {
     <div>
       <img
         src="https://icon-library.com/images/sidebar-icon/sidebar-icon-16.jpg"
-        style={{ marginLeft: "100px", width: "50px", height: "50px" }}
+        style={{ marginLeft: "100px", width: "30px", height: "30px" }}
         alt="Toggle Sidebar"
         onClick={toggleSidebar}
       />
