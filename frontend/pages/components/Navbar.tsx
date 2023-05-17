@@ -1,26 +1,30 @@
-import React from 'react'
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import Sidebar from './Sidebar';
+import React from "react";
+import Link from "next/link";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import Sidebar from "./Sidebar";
 
 const NavBar = () => {
   return (
     <div>
-       
-      <Navbar bg="white" expand="lg" variant='light'  className='navbares'>
-        <Sidebar/>
-              <Container fluid>
-                <Navbar.Brand href="#" >
-                
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Zara_Logo.svg/2560px-Zara_Logo.svg.png" style={{marginLeft:"100px",width:"200px",height:"90px"}}/></Navbar.Brand>
-               
-                <Navbar.Toggle aria-controls="navbarScroll" />
-                <Navbar.Collapse id="navbarScroll">
-                  <Nav
-                    className="me-auto my-2 my-lg-0"
-                    style={{ maxHeight: '100px' }}
-                    navbarScroll>
+      <Navbar bg="white" expand="lg" variant="light" className="navbares">
+        <Sidebar />
+        <Container fluid>
+          <Navbar.Brand href="#">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Zara_Logo.svg/2560px-Zara_Logo.svg.png"
+              style={{ marginLeft: "100px", width: "200px", height: "90px" }}
+            />
+          </Navbar.Brand>
+
+          <Navbar.Toggle aria-controls="navbarScroll" />
+          <Navbar.Collapse id="navbarScroll">
+            <Nav
+              className="me-auto my-2 my-lg-0"
+              style={{ maxHeight: "100px" }}
+              navbarScroll
+            >
               {/*When the user clicks on the Link */}
               <Nav.Link
                 href="/"
@@ -60,3 +64,4 @@ const NavBar = () => {
 }
   
 export default NavBar
+           
