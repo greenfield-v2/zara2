@@ -6,6 +6,8 @@ const getAllUsers=(req,res)=>{
         res.json(result)
     })
 }
+
+
 const searchUsers = (req, res) => {
     const searchTerm = req.query.q; // Retrieve the search query from the URL query parameter 'q'
   

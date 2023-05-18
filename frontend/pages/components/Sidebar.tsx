@@ -64,7 +64,7 @@ const Sidebar: React.FC = () => {
               
 
             </li>
-              <li>
+            <li className='nav-item'>
               <Nav.Link
                 href="/beauty"
                 style={{

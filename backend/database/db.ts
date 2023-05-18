@@ -1,5 +1,5 @@
 import mysql from 'mysql2';
-// const mysql=require('mysql2')
+
 import * as dotenv from 'dotenv'
 dotenv.config()
 const connection= mysql.createConnection({
@@ -15,4 +15,3 @@ connection.connect((err)=>{
 })
 
 export default connection
-// module.exports=connection
