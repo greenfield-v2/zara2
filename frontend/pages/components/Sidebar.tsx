@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import Nav from "react-bootstrap/Nav";
+import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Nav from 'react-bootstrap/Nav';
+
 
 const Sidebar: React.FC = () => {
   const [sidebarVisible, setSidebarVisible] = useState(false);
@@ -13,42 +14,31 @@ const Sidebar: React.FC = () => {
     <div>
       <img
         src="https://icon-library.com/images/sidebar-icon/sidebar-icon-16.jpg"
-        style={{ marginLeft: "100px", width: "50px", height: "50px" }}
+
+        style={{marginLeft: "30px", width: "30px", height: "30px" }}
+
         alt="Toggle Sidebar"
         onClick={toggleSidebar}
       />
 
       {sidebarVisible && (
-        <div className="sidebar sidebar-vertical">
+        <div className="sidebar sidebar-vertical"
+       
+
+          
+        >
           <ul className="nav flex-column">
-            <li className="nav-item">
-              <Nav.Link
-                href="/Kidz"
-                style={{
-                  color: "black",
-                  fontFamily: "Sans-serif",
-                  fontSize: "15px",
-                  marginLeft: "50px",
-                }}
-              >
-                Kidz
-              </Nav.Link>
-            </li>
-            <li className="nav-item">
-            <Nav.Link href="/Adult"
-               
-               style={{color:"black",fontFamily:"Sans-serif",fontSize:"15px", marginLeft:"50px"}}
-               >Adult
-               </Nav.Link>
-               <li className="nav-item">
+          <li className="nav-item">
             <Nav.Link href="/clothes"
               style={{color:"black",fontFamily:"Sans-serif",fontSize:"15px", marginLeft:"50px"}}
               
               >All
               </Nav.Link>
             </li>
+            <li className="nav-item">
+
               <Nav.Link
-                href="/Adult"
+                href="/kids"
                 style={{
                   color: "black",
                   fontFamily: "Sans-serif",
@@ -56,9 +46,39 @@ const Sidebar: React.FC = () => {
                   marginLeft: "50px",
                 }}
               >
-                Adult
+                Kids
+
               </Nav.Link>
             </li>
+            <li className="nav-item">
+            <Nav.Link href="/women"
+               
+               style={{color:"black",fontFamily:"Sans-serif",fontSize:"15px", marginLeft:"50px"}}
+               >Women
+               </Nav.Link>
+               <Nav.Link href="/Men"
+               
+               style={{color:"black",fontFamily:"Sans-serif",fontSize:"15px", marginLeft:"50px"}}
+               >Men
+               </Nav.Link>
+              
+
+            </li>
+              <li>
+              <Nav.Link
+                href="/beauty"
+                style={{
+                  color: "black",
+                  fontFamily: "Sans-serif",
+                  fontSize: "15px",
+                  marginLeft: "50px",
+                }}
+              >
+                Beauty
+              </Nav.Link>
+
+            </li>
+           
           </ul>
         </div>
       )}
