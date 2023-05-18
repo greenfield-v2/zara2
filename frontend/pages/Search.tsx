@@ -1,6 +1,7 @@
+
 import React, { useState, useEffect, ChangeEvent } from "react";
-import { MDBCol } from "mdbreact";
-import { Input } from "mdbreact"; 
+import React from "react";
+import { MDBCol, MDBInput ,Input} from "mdbreact";
 import styles from "../styles/Layout.module.css";
 import axios from "axios";
 

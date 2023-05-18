@@ -19,4 +19,3 @@ exports.searchUsers = (req, res) => {
     });
   };
 export default getAllUsers;
-// module.exports={getAllUsers}
