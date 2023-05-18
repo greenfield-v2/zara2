@@ -1,15 +1,15 @@
-import getAll  from '../model/user';
-const userSearch = require('../model/user');
+import x  from '../model/user';
+
 const getAllUsers=(req,res)=>{
-    getAll((err,result)=>{
+    x.getAll((err,result)=>{
         if(err) res.json(err);
         res.json(result)
     })
 }
-exports.searchUsers = (req, res) => {
+const searchUsers = (req, res) => {
     const searchTerm = req.query.q; // Retrieve the search query from the URL query parameter 'q'
   
-    userSearch(searchTerm, (err, results) => {
+    x.user(searchTerm, (err, results) => {
       if (err) {
         console.error('Error searching users:', err);
         res.status(500).json({ error: 'Internal Server Error' });
@@ -18,4 +18,4 @@ exports.searchUsers = (req, res) => {
       }
     });
   };
-export default getAllUsers;
+export default {getAllUsers,searchUsers};
