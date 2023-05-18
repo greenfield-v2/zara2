@@ -10,15 +10,15 @@ interface ClothingItem {
   cart_id: number;
 }
 
-const Clothes: React.FC = () => {
+const Beauty: React.FC = () => {
   const [data, setData] = useState<ClothingItem[]>([]);
 
   const fetchData = () => {
     axios
-      .get<{ products: ClothingItem[] }>('http://localhost:5000/all')
+      .get<{ products: ClothingItem[] }>('http://localhost:5000/all/beauty')
       .then(response => {
         console.log(response);
-        setData(response.data.products);
+        setData(response.data.products)
       })
       .catch(error => console.log(error))
   };
@@ -33,7 +33,7 @@ const Clothes: React.FC = () => {
         <ClothesDetail el={el} key={i} />
       )).reverse()}
     </div>
-  );
-};
+  )
+}
 
-export default Clothes
+export default Beauty
