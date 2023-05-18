@@ -3,6 +3,9 @@ import React, { useState, useEffect, ChangeEvent } from "react";
 import styles from "../styles/Layout.module.css";
 import axios from "axios";
 import ClothesDetail from "./ClothesDetail";
+import * as dotenv from 'dotenv'
+dotenv.config()
+
 
 interface ClothingItem {
   id: number;
@@ -27,7 +30,7 @@ const SearchPage: React.FC = () => {
     }
 
     axios
-      .get<{ products: ClothingItem[] }>(`http://localhost:5000/users/search?q=${query}`)
+      .get<{ products: ClothingItem[] }>(`http://${process.env.HOST}:${process.env.PORT}/users/search?q=${query}`)
       .then((response) => {
         console.log(response);
         setData(response.data.products);
