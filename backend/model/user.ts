@@ -4,6 +4,14 @@ const getAll=(callback)=>{
     connection.query("SELECT * FROM user",callback)
 }
 
-// module.exports={getAll}
+const user = (searchTerm, callback) => {
+    const sqlQuery = 'SELECT * FROM product WHERE clothesName LIKE ?';
+    const searchValue = `%${searchTerm}%`;
+  
+    connection.query(sqlQuery, [searchValue], callback);
+  };
+  
+  module.exports = user;
+
 export default getAll ;
 
