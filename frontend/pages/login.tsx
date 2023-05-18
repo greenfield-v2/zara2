@@ -1,7 +1,8 @@
 import React,{useState,useContext} from 'react'
 import axios from "axios";
 import {useRouter} from 'next/router'
-
+import * as dotenv from 'dotenv'
+dotenv.config()
 import  { Context } from './Context';
 const Login = () => {
     const {currentUser,setCurrentUser}=useContext(Context)
@@ -11,7 +12,7 @@ const Login = () => {
     const [password,setPassword]=useState('');
 
     const login=async()=>{
-        const res=await axios.post("http://localhost:4000/users/login",{username,password});
+        const res=await axios.post(`http://${process.env.HOST}:${process.env.PORT}/users/login`,{username,password});
         setCurrentUser(res.data)
         router.push('/')
     }

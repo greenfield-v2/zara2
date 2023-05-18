@@ -54,8 +54,8 @@ app.post('/users/login', async (req: Request, res: Response) => {
   }
 });
 
-  app.get("/all", async (req: Request, res: Response) => {
-    connection.query("SELECT * FROM product", async (err: any, results: any) => {
+app.get("/all",  (req: Request, res: Response) => {
+    connection.query("SELECT * FROM product",  (err: any, results: any) => {
       if (err) {
         console.error(err);
         return res.status(500).json({ message: 'Internal server error' });
@@ -207,7 +207,7 @@ app.get('/cart',(req:Request,res:Response)=>{
   })
 
 app.listen(process.env.PORT,()=>{
-    console.log('server listen to port 5004')
+    console.log('server listen to port '+process.env.PORT)
 
 })
 

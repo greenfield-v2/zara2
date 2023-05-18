@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ClothesDetail from './ClothesDetail';
 import axios from 'axios';
-
+import * as dotenv from 'dotenv'
+dotenv.config()
 interface ClothingItem {
   id: number;
   clothesName: string;
@@ -15,7 +16,7 @@ const Kids: React.FC = () => {
 
   const fetchData = () => {
     axios
-      .get<{ products: ClothingItem[] }>('http://localhost:4000/all/kids')
+      .get<{ products: ClothingItem[] }>(`http://${process.env.HOST}:${process.env.PORT}/all/kids`)
       .then(response => {
         console.log(response);
         setData(response.data.products);
