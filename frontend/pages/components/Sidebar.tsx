@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import Nav from "react-bootstrap/Nav";
+import React, { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Nav from 'react-bootstrap/Nav';
+
 
 const Sidebar: React.FC = () => {
   const [sidebarVisible, setSidebarVisible] = useState(false);
@@ -13,13 +14,19 @@ const Sidebar: React.FC = () => {
     <div>
       <img
         src="https://icon-library.com/images/sidebar-icon/sidebar-icon-16.jpg"
+
         style={{marginLeft: "30px", width: "30px", height: "30px" }}
+
         alt="Toggle Sidebar"
         onClick={toggleSidebar}
       />
 
       {sidebarVisible && (
-        <div className="sidebar sidebar-vertical">
+        <div className="sidebar sidebar-vertical"
+       
+
+          
+        >
           <ul className="nav flex-column">
           <li className="nav-item">
             <Nav.Link href="/clothes"
@@ -29,6 +36,7 @@ const Sidebar: React.FC = () => {
               </Nav.Link>
             </li>
             <li className="nav-item">
+
               <Nav.Link
                 href="/kids"
                 style={{
@@ -39,6 +47,7 @@ const Sidebar: React.FC = () => {
                 }}
               >
                 Kids
+
               </Nav.Link>
             </li>
             <li className="nav-item">
@@ -53,6 +62,9 @@ const Sidebar: React.FC = () => {
                >Men
                </Nav.Link>
               
+
+            </li>
+
               <Nav.Link
                 href="/beauty"
                 style={{
@@ -64,7 +76,9 @@ const Sidebar: React.FC = () => {
               >
                 Beauty
               </Nav.Link>
+
             </li>
+           
           </ul>
         </div>
       )}
