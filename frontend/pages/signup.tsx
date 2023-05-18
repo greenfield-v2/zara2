@@ -45,7 +45,7 @@ const AddUserPage = () => {
 
       <div className={styles.container}>
       <h1 className={styles.h1}>Add User</h1>
-      <form className={styles['signup-form']}>
+      <div className={styles['signup-form']}>
         <div>
           <label htmlFor="name" className={styles.label}>Username</label>
           <input type="text" id="name" value={username} onChange={handleNameChange} className={styles['input-text']} required />
@@ -63,7 +63,7 @@ const AddUserPage = () => {
           <input type="password" id="confPassword" value={confPassword} onChange={handleConfPasswordChange} className={styles['input-password']} required />
         </div>
         <button className={styles['signup-button']} onClick={handleSubmit}>Add User</button>
-      </form>
+      </div>
     </div>
     );
   };
