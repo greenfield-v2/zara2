@@ -1,5 +1,5 @@
-import React, { useState } from "react";
 import { MDBCol, MDBInput } from "mdbreact";
+import React, { useState, useEffect, ChangeEvent } from "react";
 import styles from "../styles/Layout.module.css";
 import axios from "axios";
 import ClothesDetail from "./ClothesDetail";

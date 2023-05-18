@@ -1,10 +1,15 @@
-import { NextPage } from 'next';
-import Link from 'next/link';
+
 import { useState } from 'react';
+
 import axios from 'axios'
 import styles from "../styles/sign.module.css";
-const AddUserPage: NextPage = () => {
-    
+import { useRouter } from 'next/router';
+        
+        
+        
+const AddUserPage = () => {
+    const router=useRouter();
+
     const [username, setUserName] = useState('');
     const [email, setEmail] = useState('');
     const [password,setPassword]=useState('')
@@ -28,7 +33,7 @@ const AddUserPage: NextPage = () => {
       if(password===confPassword ){
         
         await axios.post("http://localhost:4000/users/signup",{username,email,password,isAdmin:false})
-        alert('go to login')
+        router.push('/login')
       }
       else{
         return alert("you should confirm your password")
@@ -37,8 +42,9 @@ const AddUserPage: NextPage = () => {
     };
   
     return (
+
       <div className={styles.container}>
-      <h1 className={styles.h1}></h1>
+      <h1 className={styles.h1}>Add User</h1>
       <form className={styles['signup-form']}>
         <div>
           <label htmlFor="name" className={styles.label}>Username</label>

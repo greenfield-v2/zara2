@@ -10,7 +10,7 @@ const app=express()
 app.use(cors());
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
-
+app.use(route)
 
 app.post('/users/signup', async (req: Request, res: Response) => {
     const { username, email, isAdmin, password } = req.body;
@@ -45,7 +45,7 @@ app.post('/users/login', async (req: Request, res: Response) => {
         }
         const token = jwt.sign({ id: user.id, username: user.username }, process.env.ACCESS_TOKEN);
         
-        return res.status(200).json({ token:token,id: user.id});
+        return res.status(200).json({ token,id:user[0].id});
 
     });
   } catch (error) {
@@ -116,6 +116,7 @@ app.post('/users/login', async (req: Request, res: Response) => {
       res.status(200).json({ products: results });
     });
   });
+
 
 
   app.post('/add', (req: Request, res: Response) => {
@@ -204,7 +205,7 @@ app.get('/cart',(req:Request,res:Response)=>{
         res.json(result)
     })
   })
-app.use(route)
+
 app.listen(process.env.PORT,()=>{
     console.log('server listen to port 5004')
 

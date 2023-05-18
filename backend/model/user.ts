@@ -11,7 +11,7 @@ const user = (searchTerm, callback) => {
     connection.query(sqlQuery, [searchValue], callback);
   };
   
-  module.exports = user;
 
-export default getAll ;
+
+export default {getAll,user} ;
 

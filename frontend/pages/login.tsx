@@ -1,12 +1,19 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import axios from "axios";
+import {useRouter} from 'next/router'
+
+import  { Context } from './Context';
 const Login = () => {
+    const {currentUser,setCurrentUser}=useContext(Context)
+    console.log(currentUser)
+    const router=useRouter()
     const [username, setUsername] = useState('');
     const [password,setPassword]=useState('');
 
     const login=async()=>{
-        axios.post("http://localhost:4000/users/login",{username,password});
-
+        const res=await axios.post("http://localhost:4000/users/login",{username,password});
+        setCurrentUser(res.data)
+        router.push('/')
     }
   return (
     <div>
@@ -14,7 +21,7 @@ const Login = () => {
         <input type="email" id="email" value={username} onChange={e=>setUsername(e.target.value)} required/>
         <label htmlFor="password">Password:</label>
         <input type="password" id="password" value={password} onChange={e=>setPassword(e.target.value)}  required/>
-        <button>Login</button>
+        <button onClick={()=>login()}>Login</button>
     </div>
   )
 }
