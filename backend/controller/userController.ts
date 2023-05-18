@@ -7,7 +7,7 @@ const getAllUsers=(req,res)=>{
     })
 }
 exports.searchUsers = (req, res) => {
-    const searchTerm = req.query.q; // Retrieve the search query from the URL query parameter 'q'
+    const searchTerm = req.query.q; 
   
     userSearch(searchTerm, (err, results) => {
       if (err) {

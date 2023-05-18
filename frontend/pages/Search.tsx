@@ -1,57 +1,64 @@
-
-import React, { useState, useEffect, ChangeEvent } from "react";
-import React from "react";
-import { MDBCol, MDBInput ,Input} from "mdbreact";
+import React, { useState } from "react";
+import { MDBCol, MDBInput } from "mdbreact";
 import styles from "../styles/Layout.module.css";
 import axios from "axios";
+import ClothesDetail from "./ClothesDetail";
 
-interface Product {
+interface ClothingItem {
   id: number;
   clothesName: string;
+  image: string;
+  category: string;
+  cart_id: number;
 }
 
 const SearchPage: React.FC = () => {
-  const [searchTerm, setSearchTerm] = useState<string>("");
-  const [searchResults, setSearchResults] = useState<Product[]>([]);
+  const [data, setData] = useState<ClothingItem[]>([]);
+  const [searchText, setSearchText] = useState("");
 
-  const handleSearch = async () => {
-    try {
-      const response = await axios.get<Product[]>(`http://localhost:4000/users/search?q=${searchTerm}`);
-      setSearchResults(response.data);
-    } catch (error) {
-      console.error("Error searching users:", error);
-      
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const query = e.target.value.trim();
+
+    setSearchText(query);
+
+    if (query === "") {
+      setData([]);
+      return;
     }
-  };
 
-  useEffect(() => {
-    
-    handleSearch();
-  }, [searchTerm]);
-
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(e.target.value);
+    axios
+      .get<{ products: ClothingItem[] }>(`http://localhost:5000/users/search?q=${query}`)
+      .then((response) => {
+        console.log(response);
+        setData(response.data.products);
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
-    <MDBCol md="10">
-      <Input
-        hint="SEARCH FOR AN ITEM"
-        type="text"
-        containerClass={`${styles.searchInput}`}
-        value={searchTerm}
-        onChange={handleChange}
-      />
+    <div
+      style={{
+        marginTop: "10px",
+        display: "flex",
+        width: "100%",
+        justifyContent: "space-between",
+        flexWrap: "wrap",
+      }}
+    >
+      {data.map((el) => (
+        <ClothesDetail el={el} key={el.id} />
+      ))}
 
-      <div>
-        {/* Display search results */}
-        <ul>
-          {searchResults.map((product) => (
-            <li key={product.id}>{product.clothesName}</li>
-          ))}
-        </ul>
-      </div>
-    </MDBCol>
+      <MDBCol md="10">
+        <MDBInput
+          hint="Search"
+          type="text"
+          containerClass={`${styles.searchInput}`}
+          value={searchText}
+          onChange={handleSearch}
+        />
+      </MDBCol>
+    </div>
   );
 };
 
