@@ -41,13 +41,69 @@ app.post('/users/signup', async (req: Request, res: Response) => {
     });
   });
 
-    
+  app.get("/all", async (req: Request, res: Response) => {
+    connection.query("SELECT * FROM product", async (err: any, results: any) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ message: 'Internal server error' });
+      }
+  
+      res.status(200).json({ products: results })
+    })
+  })  
    
-
-
-
+  app.get("/all/adult", async (req: Request, res: Response) => {
+    connection.query("SELECT * FROM product WHERE category='adult'", async (err: any, results: any) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ message: 'Internal server error' });
+      }
+  
+      res.status(200).json({ products: results });
+    });
+  });
+  app.get("/all/kids", async (req: Request, res: Response) => {
+    connection.query("SELECT * FROM product WHERE category='kids'", async (err: any, results: any) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ message: 'Internal server error' });
+      }
+  
+      res.status(200).json({ products: results });
+    });
+  });
+  app.get("/all/women", async (req: Request, res: Response) => {
+    connection.query("SELECT * FROM product WHERE category='women'", async (err: any, results: any) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ message: 'Internal server error' });
+      }
+  
+      res.status(200).json({ products: results });
+    });
+  });
+  app.get("/all/men", async (req: Request, res: Response) => {
+    connection.query("SELECT * FROM product WHERE category='men'", async (err: any, results: any) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ message: 'Internal server error' });
+      }
+  
+      res.status(200).json({ products: results });
+    });
+  });
+  app.get("/all/beauty", async (req: Request, res: Response) => {
+    connection.query("SELECT * FROM product WHERE category='beauty'", async (err: any, results: any) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ message: 'Internal server error' });
+      }
+  
+      res.status(200).json({ products: results });
+    });
+  });
 app.use(route)
-app.listen(4000,()=>{
+app.listen(5000,()=>{
     console.log('server listen to port 4000')
 })
 
