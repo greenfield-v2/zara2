@@ -12,6 +12,7 @@ app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 app.use(route)
 
+
 app.post('/users/signup', async (req: Request, res: Response) => {
     const { username, email, isAdmin, password } = req.body;
     connection.query("SELECT * FROM user WHERE username=?", [req.body.username], async (err:any, results: any) => {
@@ -117,8 +118,6 @@ app.get("/all",  (req: Request, res: Response) => {
     });
   });
 
-
-
   app.post('/add', (req: Request, res: Response) => {
     const { productId, userId } = req.body;
   
@@ -206,8 +205,11 @@ app.get('/cart',(req:Request,res:Response)=>{
     })
   })
 
+
+
 app.listen(process.env.PORT,()=>{
     console.log('server listen to port '+process.env.PORT)
+
 
 })
 
