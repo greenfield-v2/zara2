@@ -1,9 +1,9 @@
-import { NextPage } from 'next';
-import Link from 'next/link';
+
 import { useState } from 'react';
-import axios from 'axios'
-const AddUserPage: NextPage = () => {
-    
+import axios from 'axios';
+import { useRouter } from 'next/router';
+const AddUserPage = () => {
+    const router=useRouter();
     const [username, setUserName] = useState('');
     const [email, setEmail] = useState('');
     const [password,setPassword]=useState('')
@@ -27,7 +27,7 @@ const AddUserPage: NextPage = () => {
       if(password===confPassword ){
         
         await axios.post("http://localhost:4000/users/signup",{username,email,password,isAdmin:false})
-        alert('go to login')
+        router.push('/login')
       }
       else{
         return alert("you should confirm your password")
@@ -38,7 +38,7 @@ const AddUserPage: NextPage = () => {
     return (
       <div>
         <h1>Add User</h1>
-        <form >
+        
           <div>
             <label htmlFor="name">Username</label>
             <input type="text" id="name" value={username} onChange={handleNameChange} required/>
@@ -54,7 +54,7 @@ const AddUserPage: NextPage = () => {
          <button onClick={
           handleSubmit
           }>Add User</button>
-        </form>
+        
       </div>
     );
   };

@@ -45,7 +45,7 @@ app.post('/users/login', async (req: Request, res: Response) => {
         }
         const token = jwt.sign({ id: user.id, username: user.username }, process.env.ACCESS_TOKEN);
         
-        return res.status(200).json({ token:token,id: user.id});
+        return res.status(200).json({ token,id:user[0].id});
 
     });
   } catch (error) {
@@ -117,8 +117,7 @@ app.post('/users/login', async (req: Request, res: Response) => {
     });
   });
 app.use(route)
-app.listen(5000,()=>{
-    console.log('server listen to port 4000')
+
 
   app.post('/add', (req: Request, res: Response) => {
     const { productId, userId } = req.body;
