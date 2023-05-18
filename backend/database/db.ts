@@ -1,12 +1,14 @@
 import mysql from 'mysql2';
+
+
+
 import * as dotenv from 'dotenv'
 dotenv.config()
 const connection= mysql.createConnection({
-    host: "127.0.0.1",
-    user: "root",
-    password: '12345678',
-    database: 'zara',
-    
+    host: process.env.HOST,
+    user: process.env.USER ,
+    password: process.env.PASSWORD,
+    database: process.env.DATABASE
 });
 
 connection.connect((err)=>{
@@ -14,4 +16,6 @@ connection.connect((err)=>{
     console.log(`connected to database `)
 })
 
+
 export default connection
+

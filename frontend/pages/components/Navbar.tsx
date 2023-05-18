@@ -55,7 +55,10 @@ const NavBar = () => {
               SEARCH{" "}
             </Nav.Link>
 
-                  <Nav.Link href="/login" style={{ fontFamily:"Sans-serif",fontSize:"15px"}} >LOG IN</Nav.Link>
+                  <div style={{display:"flex",justifyContent:"space-between"}}>
+                    <Nav.Link href="/login" style={{ fontFamily:"Sans-serif",fontSize:"15px"}} >LOG IN</Nav.Link>
+                    <Nav.Link href="/signup" style={{ fontFamily:"Sans-serif",fontSize:"15px"}} >SIGN UP</Nav.Link>
+                  </div>
                   <img src="https://cdn-icons-png.flaticon.com/512/118/118089.png" style={{marginRight:"70px", marginLeft:"80px",width:"30px",height:"30px"}}/>
 
                 </Navbar.Collapse>
