@@ -1,17 +1,17 @@
 import mysql from 'mysql2';
-// const mysql=require('mysql2')
-
+import * as dotenv from 'dotenv'
+dotenv.config()
 const connection= mysql.createConnection({
-    host: '127.0.0.1',
-    user: 'root',
+    host: "127.0.0.1",
+    user: "root",
     password: '12345678',
-    database: 'ZARA'
+    database: 'zara',
+    
 });
 
 connection.connect((err)=>{
     if(err) console.log(err)
-    console.log("connected to mysql")
+    console.log(`connected to database `)
 })
 
 export default connection
-// module.exports=connection

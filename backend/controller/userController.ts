@@ -1,4 +1,5 @@
 import getAll  from '../model/user';
+
 const getAllUsers=(req,res)=>{
     getAll((err,result)=>{
         if(err) res.json(err);
