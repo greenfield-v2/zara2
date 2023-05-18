@@ -10,7 +10,7 @@ const app=express()
 app.use(cors());
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
-
+app.use(route)
 
 app.post('/users/signup', async (req: Request, res: Response) => {
     const { username, email, isAdmin, password } = req.body;
@@ -116,9 +116,8 @@ app.post('/users/login', async (req: Request, res: Response) => {
       res.status(200).json({ products: results });
     });
   });
-app.use(route)
-app.listen(5000,()=>{
-    console.log('server listen to port 4000')
+
+
 
   app.post('/add', (req: Request, res: Response) => {
     const { productId, userId } = req.body;
@@ -207,7 +206,7 @@ app.get('/cart',(req:Request,res:Response)=>{
     })
   })
 app.use(route)
-app.listen(5004,()=>{
+app.listen(process.env.PORT,()=>{
     console.log('server listen to port 5004')
 
 })
