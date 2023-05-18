@@ -2,10 +2,10 @@ import mysql from 'mysql2';
 // const mysql=require('mysql2')
 
 const connection= mysql.createConnection({
-    host: 'localhost',
+    host: '127.0.0.1',
     user: 'root',
-    password: 'root',
-    database: 'zara'
+    password: '12345678',
+    database: 'ZARA'
 });
 
 connection.connect((err)=>{
