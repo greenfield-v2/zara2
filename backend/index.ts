@@ -143,7 +143,7 @@ app.get('/cart',(req:Request,res:Response)=>{
     })
   })
 app.use(route)
-app.listen(5004,()=>{
+app.listen(process.env.PORT,()=>{
     console.log('server listen to port 5004')
 })
 
