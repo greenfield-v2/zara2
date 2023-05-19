@@ -16,7 +16,7 @@ const Clothes: React.FC = () => {
   const [data, setData] = useState<ClothingItem[]>([]);
   const [count,setCount]=useState(0)
   const fetchData = () => {
-    
+
     axios.get<{ products: ClothingItem[] }>(`http://${process.env.HOST}:${process.env.PORT}/all`)
       .then(response => {
         console.log(response);

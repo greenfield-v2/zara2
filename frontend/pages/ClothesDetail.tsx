@@ -4,10 +4,14 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { Context } from './Context';
 import axios from 'axios';
+import styles from '../styles/Layout.module.css';
+
+
 
 const ClothesDetail = ({ el,setCount,count }: any) => {
   const { currentUser } = useContext(Context);
   const [showLogin, setShowLogin] = useState(false);
+
 
 
   const remove=async()=>{
@@ -41,7 +45,7 @@ const ClothesDetail = ({ el,setCount,count }: any) => {
   };
 
   return (
-    <Card style={{ width: '20rem', background: 'white', margin: '20px 10px', position: 'static' }} className='clothescard'>
+    <Card style={{ width: '20rem', background: 'white', margin: '20px 10px', position: 'static' }} className={styles['clothescard']}>
       <Card.Img variant='top' src={el.image} style={{ width: '318px', height: '400px' }} />
       <Card.Body>
         <div style={{display:'flex',justifyContent:"space-between"}}>

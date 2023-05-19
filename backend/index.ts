@@ -9,7 +9,7 @@ const app=express()
 app.use(cors());
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
-app.use(route)
+
 
 
 app.post('/users/signup', async (req: Request, res: Response) => {
@@ -150,6 +150,8 @@ app.get('/cart',(req:Request,res:Response)=>{
   })
 
 
+app.use(route)
+
   app.get('/search/:name', (req: Request, res: Response) => {
     const {name} = req.params;
     connection.query("SELECT * FROM product WHERE clothesName LIKE ?", [`%${name}%`], (err: any, results: any) => {
@@ -194,6 +196,7 @@ app.get('/cart',(req:Request,res:Response)=>{
       res.json('deleted')
     })
   })
+
 
 
 app.listen(process.env.PORT,()=>{
