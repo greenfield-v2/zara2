@@ -150,12 +150,51 @@ app.get('/cart',(req:Request,res:Response)=>{
   })
 
 
+  app.get('/search/:name', (req: Request, res: Response) => {
+    const {name} = req.params;
+    connection.query("SELECT * FROM product WHERE clothesName LIKE ?", [`%${name}%`], (err: any, results: any) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ message: 'Internal server error' });
+      }
+  
+      res.status(200).json({ products: results });
+    });
+  });
+
+
+
+ 
+
+  app.put('/update', (req: Request, res: Response) => {
+    const { currentName, newName, newImage, newPrice, newCategory } = req.body;
+  
+    const updateQuery = 'UPDATE product SET clothesName = ?, image = ?, price = ?, category = ? WHERE clothesName = ?';
+    const updateValues = [newName, newImage, newPrice, newCategory, currentName];
+  
+    connection.query(updateQuery, updateValues, (err: any, result: any) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ message: 'Internal server error' });
+      }
+  
+      if (result.affectedRows === 0) {
+        return res.status(404).json({ message: 'Product not found' });
+      }
+  
+      res.status(200).json({ message: 'Product updated successfully' });
+    });
+  });
+  
+
+
   app.delete('/product/:id',(req:Request,res:Response)=>{
     connection.query('DELETE FROM product WHERE id=?',[req.params.id],(err,result)=>{
       if(err) res.json(err);
       res.json('deleted')
     })
   })
+
 
 app.listen(process.env.PORT,()=>{
     console.log('server listen to port '+process.env.PORT)
