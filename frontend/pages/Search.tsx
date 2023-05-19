@@ -27,7 +27,7 @@ const SearchPage: React.FC = () => {
     }
 
     axios
-      .get<{ products: ClothingItem[] }>(`http://localhost:5000/users/search?q=${query}`)
+      .get<{ products: ClothingItem[] }>(`http://localhost:4000/search/${query}`)
       .then((response) => {
         console.log(response);
         setData(response.data.products);
