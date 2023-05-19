@@ -74,24 +74,17 @@ const ClothesDetail = ({ el, setCount, count }: any) => {
     setCount(count + 1);
   };
 
-  // Function to handle adding the product to the cart
   const addToCart = async () => {
-    // Check if the user is logged in
     if (!currentUser) {
-      // User is not logged in, show the login component
       setShowLogin(true);
     } else {
-      // User is logged in, proceed with adding the product to the cart
-
-      // Create a payload with the product ID and the current user ID
       const payload = {
-        product_id: el.d,
+        product_id: el.id,
         user_id: currentUser.id,
       };
-
+      console.log(payload)
       try {
-        // Perform a POST request to your API endpoint using axios to add the product to the cart table
-        const response = await axios.post('/api/cart', payload);
+        const response = await axios.post(`http://${process.env.HOST}:${process.env.PORT}/cart`, payload);
         console.log('Product added to cart:', response.data);
       } catch (error) {
         console.error('Error adding product to cart:', error);

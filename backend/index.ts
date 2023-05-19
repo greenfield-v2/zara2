@@ -204,11 +204,35 @@ app.use(route)
   })
 
 
+  app.get('/cart/:id',(req:Request,res:Response)=>{
+    connection.query(`SELECT * FROM cart WHERE user_id= ${req.params.id} `,(err,results:any)=>{
+      if(err) res.json(err)
+      res.json(results)
+      
+    })
+  })
 
-app.listen(process.env.PORT,()=>{
-    console.log('server listen to port '+process.env.PORT)
 
 
+
+
+  app.get('/product/:id',(req,res)=>{
+    connection.query('SELECT * FROM product WHERE id=?',[req.params.id],(err,result)=>{
+      if(err) res.json(err);
+      res.json(result)
+
+  })
 })
 
-// process.env.PORT
+app.delete('/cart/:id',(req:Request,res:Response)=>{
+  connection.query('DELETE FROM cart WHERE product_id=?',[req.params.id],(err,result)=>{
+    if(err) res.json(err);
+    res.json('deleted')
+  })
+})
+
+
+  app.listen(process.env.PORT,()=>{
+    console.log('server listen to port '+process.env.PORT)})
+  
+ 
