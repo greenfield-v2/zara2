@@ -32,7 +32,7 @@ const AddUserPage = () => {
     const handleSubmit = async (e: React.FormEvent) => {
       if(password===confPassword ){
         
-        await axios.post(`http://localhost:4003/users/signup`,{username,email,password,isAdmin:false})
+        await axios.post(`http://${process.env.HOST}:${process.env.PORT}/users/signup`,{username,email,password,isAdmin:false})
         router.push('/login')
       }
       else{

@@ -31,7 +31,7 @@ const NavBar = () => {
               navbarScroll
             >
               {/*When the user clicks on the Link */}
-              <Nav.Link
+              <Link
                 href="/"
                 style={{
                   color: "black",
@@ -42,10 +42,10 @@ const NavBar = () => {
               >
                 {" "}
                 HOME{" "}
-              </Nav.Link>
+              </Link>
             </Nav>
 
-            <Nav.Link
+            <Link
               href="/Search"
               style={{
                 fontFamily: "Sans-serif",
@@ -56,13 +56,14 @@ const NavBar = () => {
             >
               {" "}
               SEARCH{" "}
-            </Nav.Link>
+            </Link>
 
                   {currentUser.id===0 && <div style={{display:"flex",justifyContent:"space-between"}}>
-                    <Nav.Link href="/login" style={{ fontFamily:"Sans-serif",fontSize:"15px"}} >LOG IN</Nav.Link>
-                    <Nav.Link href="/signup" style={{ fontFamily:"Sans-serif",fontSize:"15px"}} >SIGN UP</Nav.Link>
+                    <Link href="/login" style={{ fontFamily:"Sans-serif",fontSize:"15px"}} >LOG IN</Link>
+                    <Link href="/signup" style={{ fontFamily:"Sans-serif",fontSize:"15px" ,paddingLeft:"15px"}} >SIGN UP</Link>
                   </div>}
-                  {currentUser.id>0 && <Nav.Link href="/" style={{ fontFamily:"Sans-serif",fontSize:"15px"}} >LOGOUT</Nav.Link>}
+                  {currentUser.id>0 && <Link href="/" style={{ fontFamily:"Sans-serif",fontSize:"15px"}} onClick={()=>logout()}>LOGOUT</Link>}
+                  {currentUser.isAdmin===1 && <Link href="/AddProduct" style={{ fontFamily:"Sans-serif",fontSize:"15px" ,paddingLeft:"15px"}} >Add Product</Link>}
                   <img src="https://cdn-icons-png.flaticon.com/512/118/118089.png" style={{marginRight:"70px", marginLeft:"80px",width:"30px",height:"30px"}}/>
 
                 </Navbar.Collapse>
