@@ -2,7 +2,7 @@
 import { useState } from 'react';
 
 import axios from 'axios'
-import styles from "../styles/sign.module.css";
+import styles from '../styles/sign.module.css';
 import { useRouter } from 'next/router';
     
         
@@ -44,7 +44,7 @@ const AddUserPage = () => {
     return (
 
       <div className={styles.container}>
-      <h1 className={styles.h1}>Add User</h1>
+      <h1 className={styles.h1}></h1>
       <div className={styles['signup-form']}>
         <div>
           <label htmlFor="name" className={styles.label}>Username</label>

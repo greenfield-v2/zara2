@@ -173,13 +173,13 @@ app.use(route)
     })
   })
 
+
   app.put('/product/:id', (req: Request, res: Response) => {
     const { id } = req.params;
     const { clothesName, image, price,category} = req.body;
   
     const updateQuery = "UPDATE product SET clothesName = ?, image = ?, price = ?, category = ? WHERE id = ?";
     const updateValues = [clothesName, image, price, category,id];
-  
     connection.query(updateQuery, updateValues, (err: any, result: any) => {
       if (err) {
         console.error(err);
@@ -191,6 +191,18 @@ app.use(route)
       res.status(200).json({ message: 'Product updated successfully' });
     });
   });
+
+  
+  
+
+
+  app.delete('/product/:id',(req:Request,res:Response)=>{
+    connection.query('DELETE FROM product WHERE id=?',[req.params.id],(err,result)=>{
+      if(err) res.json(err);
+      res.json('deleted')
+    })
+  })
+
 
 
 app.listen(process.env.PORT,()=>{

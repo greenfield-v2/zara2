@@ -38,6 +38,16 @@ const SearchPage: React.FC = () => {
   };
 
   return (
+    <div>
+    <MDBCol md="11">
+        <MDBInput
+          hint="Search"
+          type="text"
+          containerClass={`${styles.searchInput}`}
+          value={searchText}
+          onChange={handleSearch}
+        />
+      </MDBCol>
     <div
       style={{
         marginTop: "10px",
@@ -51,15 +61,8 @@ const SearchPage: React.FC = () => {
         <ClothesDetail el={el} key={el.id} />
       ))}
 
-      <MDBCol md="10">
-        <MDBInput
-          hint="Search"
-          type="text"
-          containerClass={`${styles.searchInput}`}
-          value={searchText}
-          onChange={handleSearch}
-        />
-      </MDBCol>
+      
+    </div>
     </div>
   );
 };
