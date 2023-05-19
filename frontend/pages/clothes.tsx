@@ -15,7 +15,7 @@ const Clothes: React.FC = () => {
 
   const fetchData = () => {
     axios
-      .get<{ products: ClothingItem[] }>('http://localhost:5000/all')
+      .get<{ products: ClothingItem[] }>('http://localhost:8000/all')
       .then(response => {
         console.log(response);
         setData(response.data.products);
