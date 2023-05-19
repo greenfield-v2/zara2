@@ -166,11 +166,12 @@ app.get('/cart',(req:Request,res:Response)=>{
 
  
 
-  app.put('/update', (req: Request, res: Response) => {
-    const { currentName, newName, newImage, newPrice, newCategory } = req.body;
+  app.put('/update/:id', (req: Request, res: Response) => {
+    const { id } = req.params;
+    const { newName, newImage, newPrice, newCategory } = req.body;
   
-    const updateQuery = 'UPDATE product SET clothesName = ?, image = ?, price = ?, category = ? WHERE clothesName = ?';
-    const updateValues = [newName, newImage, newPrice, newCategory, currentName];
+    const updateQuery = 'UPDATE product SET clothesName = ?, image = ?, price = ?, category = ? WHERE id = ?';
+    const updateValues = [newName, newImage, newPrice, newCategory, id];
   
     connection.query(updateQuery, updateValues, (err: any, result: any) => {
       if (err) {
@@ -185,6 +186,7 @@ app.get('/cart',(req:Request,res:Response)=>{
       res.status(200).json({ message: 'Product updated successfully' });
     });
   });
+  
   
 
 
