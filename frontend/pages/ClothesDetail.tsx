@@ -1,3 +1,4 @@
+
 import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
@@ -7,6 +8,7 @@ import axios from 'axios';
 const ClothesDetail = ({ el }: any) => {
   const { currentUser } = useContext(Context);
   const [showLogin, setShowLogin] = useState(false);
+
 
   // Function to handle adding the product to the cart
   const addToCart = async () => {
