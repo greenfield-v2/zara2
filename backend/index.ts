@@ -4,13 +4,13 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import cors from 'cors';
 import route from './routes/userRoutes'
-import * as dotenv from 'dotenv'
-dotenv.config()
+
 const app=express()
 app.use(cors());
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 app.use(route)
+
 
 app.post('/users/signup', async (req: Request, res: Response) => {
     const { username, email, isAdmin, password } = req.body;
@@ -45,7 +45,7 @@ app.post('/users/login', async (req: Request, res: Response) => {
         }
         const token = jwt.sign({ id: user.id, username: user.username }, process.env.ACCESS_TOKEN);
         
-        return res.status(200).json({ token,id:user[0].id});
+        return res.status(200).json({ token,id:user[0].id,isAdmin:user[0].isAdmin});
 
     });
   } catch (error) {
@@ -54,8 +54,8 @@ app.post('/users/login', async (req: Request, res: Response) => {
   }
 });
 
-  app.get("/all", async (req: Request, res: Response) => {
-    connection.query("SELECT * FROM product", async (err: any, results: any) => {
+app.get("/all",  (req: Request, res: Response) => {
+    connection.query("SELECT * FROM product",  (err: any, results: any) => {
       if (err) {
         console.error(err);
         return res.status(500).json({ message: 'Internal server error' });
@@ -64,7 +64,7 @@ app.post('/users/login', async (req: Request, res: Response) => {
       res.status(200).json({ products: results })
     })
   })  
-   
+  
 
   app.get("/all/adult", async (req: Request, res: Response) => {
     connection.query("SELECT * FROM product WHERE category='adult'", async (err: any, results: any) => {
@@ -119,63 +119,6 @@ app.post('/users/login', async (req: Request, res: Response) => {
 
 
 
-  app.post('/add', (req: Request, res: Response) => {
-    const { productId, userId } = req.body;
-  
-    // Check if the product and user exist
-    const getProductQuery = 'SELECT * FROM product WHERE id = ?';
-    const getUserQuery = 'SELECT * FROM user WHERE iduser = ?';
-  
-    connection.query(getProductQuery, [productId], (err: any, productResults: any) => {
-      if (err) {
-        // Handle any error that occurs during the query
-        return res.status(500).json({ message: 'Internal server error' });
-      }
-  
-      if (productResults.length === 0) {
-        // If the product does not exist, return an error response
-        return res.status(404).json({ message: 'Product not found' });
-      }
-  
-      connection.query(getUserQuery, [userId], (err: any, userResults: any) => {
-        if (err) {
-          // Handle any error that occurs during the query
-          return res.status(500).json({ message: 'Internal server error' });
-        }
-  
-        if (userResults.length === 0) {
-          // If the user does not exist, return an error response
-          return res.status(404).json({ message: 'User not found' });
-        }
-  
-        // Insert the product into the user's cart
-        const addToCartQuery = 'INSERT INTO product (clothesName, image, category, cart_id) VALUES (?, ?, ?, ?)';
-        connection.query(
-          addToCartQuery,
-          [productResults[0].clothesName, productResults[0].image, productResults[0].category, userResults[0].cart_id],
-          (err: any) => {
-            if (err) {
-              // Handle any error that occurs during the query
-              return res.status(500).json({ message: 'Internal server error' });
-            }
-  
-            // Return a success response
-            res.status(200).json({ message: 'Product added to cart successfully' });
-          }
-        );
-      });
-    });
-  });
-// Delete a product from the user's cart
-app.delete('/delete-from-cart', (req: Request, res: Response) => {
-  const { productId, userId } = req.body;
-  // Check if the product and user exist
-  const getProductQuery = 'SELECT * FROM product WHERE id = ?';
-
-}
-)
-  
-
 
 app.post('/cart',(req:Request,res:Response)=>{
     const {user_id,product_id}=req.body
@@ -205,6 +148,7 @@ app.get('/cart',(req:Request,res:Response)=>{
         res.json(result)
     })
   })
+
 
   app.get('/search/:name', (req: Request, res: Response) => {
     const {name} = req.params;
@@ -243,9 +187,19 @@ app.get('/cart',(req:Request,res:Response)=>{
   });
   
 
+
+  app.delete('/product/:id',(req:Request,res:Response)=>{
+    connection.query('DELETE FROM product WHERE id=?',[req.params.id],(err,result)=>{
+      if(err) res.json(err);
+      res.json('deleted')
+    })
+  })
+
+
 app.listen(process.env.PORT,()=>{
-    console.log('server listen to port 5004')
+    console.log('server listen to port '+process.env.PORT)
+
 
 })
 
-
+// process.env.PORT
