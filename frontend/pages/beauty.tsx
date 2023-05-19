@@ -15,7 +15,7 @@ const Beauty: React.FC = () => {
 
   const fetchData = () => {
     axios
-      .get<{ products: ClothingItem[] }>('http://localhost:5000/all/beauty')
+      .get<{ products: ClothingItem[] }>(`http://${process.env.HOST}:${process.env.PORT}/all/beauty`)
       .then(response => {
         console.log(response);
         setData(response.data.products)

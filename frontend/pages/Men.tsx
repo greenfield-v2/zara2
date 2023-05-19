@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ClothesDetail from './ClothesDetail'
 import axios from 'axios'
 
+
 interface ClothingItem {
   id: number;
   clothesName: string;
@@ -15,7 +16,7 @@ const Men: React.FC = () => {
 
   const fetchData = () => {
     axios
-      .get<{ products: ClothingItem[] }>('http://localhost:4000/all/men')
+      .get<{ products: ClothingItem[] }>(`http://${process.env.HOST}:${process.env.PORT}/all/men`)
       .then(response => {
         console.log(response);
         setData(response.data.products);

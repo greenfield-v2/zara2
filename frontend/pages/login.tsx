@@ -11,7 +11,7 @@ const Login = () => {
     const [password,setPassword]=useState('');
 
     const login=async()=>{
-        const res=await axios.post("http://localhost:4000/users/login",{username,password});
+        const res=await axios.post(`http://${process.env.HOST}:${process.env.PORT}/users/login`,{username,password});
         setCurrentUser(res.data)
         router.push('/')
     }

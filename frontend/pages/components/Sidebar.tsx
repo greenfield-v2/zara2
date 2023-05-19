@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Nav from 'react-bootstrap/Nav';
-
+import Link from 'next/link';
 
 const Sidebar: React.FC = () => {
   const [sidebarVisible, setSidebarVisible] = useState(false);
@@ -29,15 +28,15 @@ const Sidebar: React.FC = () => {
         >
           <ul className="nav flex-column">
           <li className="nav-item">
-            <Nav.Link href="/clothes"
+            <Link href="/clothes"
               style={{color:"black",fontFamily:"Sans-serif",fontSize:"15px", marginLeft:"50px"}}
               
               >All
-              </Nav.Link>
+              </Link>
             </li>
             <li className="nav-item">
 
-              <Nav.Link
+              <Link
                 href="/kids"
                 style={{
                   color: "black",
@@ -48,24 +47,24 @@ const Sidebar: React.FC = () => {
               >
                 Kids
 
-              </Nav.Link>
+              </Link>
             </li>
             <li className="nav-item">
-            <Nav.Link href="/women"
+            <Link href="/women"
                
                style={{color:"black",fontFamily:"Sans-serif",fontSize:"15px", marginLeft:"50px"}}
                >Women
-               </Nav.Link>
-               <Nav.Link href="/Men"
+               </Link>
+               <Link href="/Men"
                
                style={{color:"black",fontFamily:"Sans-serif",fontSize:"15px", marginLeft:"50px"}}
                >Men
-               </Nav.Link>
+               </Link>
               
 
             </li>
             <li className='nav-item'>
-              <Nav.Link
+              <Link
                 href="/beauty"
                 style={{
                   color: "black",
@@ -75,7 +74,7 @@ const Sidebar: React.FC = () => {
                 }}
               >
                 Beauty
-              </Nav.Link>
+              </Link>
 
             </li>
            

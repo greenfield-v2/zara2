@@ -1,4 +1,6 @@
+
 import x  from '../model/user';
+
 
 const getAllUsers=(req,res)=>{
     x.getAll((err,result)=>{

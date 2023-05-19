@@ -4,7 +4,7 @@ import { useState } from 'react';
 import axios from 'axios'
 import styles from "../styles/sign.module.css";
 import { useRouter } from 'next/router';
-        
+    
         
         
 const AddUserPage = () => {
@@ -32,7 +32,7 @@ const AddUserPage = () => {
     const handleSubmit = async (e: React.FormEvent) => {
       if(password===confPassword ){
         
-        await axios.post("http://localhost:4000/users/signup",{username,email,password,isAdmin:false})
+        await axios.post(`http://${process.env.HOST}:${process.env.PORT}/users/signup`,{username,email,password,isAdmin:false})
         router.push('/login')
       }
       else{
