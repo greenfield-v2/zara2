@@ -29,7 +29,7 @@ const SearchPage: React.FC = () => {
     }
 
     axios
-      .get<{ products: ClothingItem[] }>(`http://${process.env.HOST}:${process.env.PORT}/users/search?q=${query}`)
+      .get<{ products: ClothingItem[] }>(`http://${process.env.HOST}:${process.env.PORT}/search/${query}`)
       .then((response) => {
         console.log(response);
         setData(response.data.products);
