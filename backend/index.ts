@@ -4,8 +4,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import cors from 'cors';
 import route from './routes/userRoutes'
-import * as dotenv from 'dotenv'
-dotenv.config()
+
 const app=express()
 app.use(cors());
 app.use(express.json())
@@ -150,10 +149,10 @@ app.get('/cart',(req:Request,res:Response)=>{
     })
   })
 
+const PORT = 4003
 
-
-app.listen(process.env.PORT,()=>{
-    console.log('server listen to port '+process.env.PORT)
+app.listen(PORT,()=>{
+    console.log('server listen to port '+PORT)
 
 
 })
