@@ -157,10 +157,39 @@ app.get('/cart',(req:Request,res:Response)=>{
     })
   })
 
-app.listen(process.env.PORT,()=>{
-    console.log('server listen to port '+process.env.PORT)
+  app.get('/cart/:id',(req:Request,res:Response)=>{
+    connection.query(`SELECT * FROM cart WHERE user_id= ${req.params.id} `,(err,results:any)=>{
+      if(err) res.json(err)
+      res.json(results)
+      
+    })
+  })
 
+  app.get('/product/:id',(req,res)=>{
+    connection.query('SELECT * FROM product WHERE id=?',[req.params.id],(err,result)=>{
+      if(err) res.json(err);
+      res.json(result)
 
+  })
 })
 
-// process.env.PORT
+app.delete('/cart/:id',(req:Request,res:Response)=>{
+  connection.query('DELETE FROM cart WHERE product_id=?',[req.params.id],(err,result)=>{
+    if(err) res.json(err);
+    res.json('deleted')
+  })
+})
+
+
+  app.listen(process.env.PORT,()=>{
+    console.log('server listen to port '+process.env.PORT)})
+  
+  // process.env.PORT
+  
+  // for(var i=0;i<results.length;i++){
+  //   connection.query(`SELECT * FROM product WHERE id =  ${results[i].product_id} `,(err,result:any)=>{
+  //     if(err) res.json(err)
+  //     arr.push(...result)
+  //   })
+
+  // }

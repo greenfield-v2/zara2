@@ -57,7 +57,7 @@ const SearchPage: React.FC = () => {
           type="text"
           containerClass={`${styles.searchInput}`}
           value={searchText}
-          onChange={handleSearch}
+          onChange={()=>handleSearch}
         />
       </MDBCol>
     </div>

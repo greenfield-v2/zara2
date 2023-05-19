@@ -64,7 +64,7 @@ const NavBar = () => {
                   </div>}
                   {currentUser.id>0 && <Link href="/" style={{ fontFamily:"Sans-serif",fontSize:"15px"}} onClick={()=>logout()}>LOGOUT</Link>}
                   {currentUser.isAdmin===1 && <Link href="/AddProduct" style={{ fontFamily:"Sans-serif",fontSize:"15px" ,paddingLeft:"15px"}} >Add Product</Link>}
-                  <img src="https://cdn-icons-png.flaticon.com/512/118/118089.png" style={{marginRight:"70px", marginLeft:"80px",width:"30px",height:"30px"}}/>
+                  <Link href="/Cart"> <img src="https://cdn-icons-png.flaticon.com/512/118/118089.png" style={{marginRight:"70px", marginLeft:"80px",width:"30px",height:"30px"}}/></Link>
 
                 </Navbar.Collapse>
               </Container>
