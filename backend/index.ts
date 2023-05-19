@@ -9,7 +9,7 @@ const app=express()
 app.use(cors());
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
-app.use(route)
+
 
 
 app.post('/users/signup', async (req: Request, res: Response) => {
@@ -150,6 +150,8 @@ app.get('/cart',(req:Request,res:Response)=>{
   })
 
 
+app.use(route)
+
   app.get('/search/:name', (req: Request, res: Response) => {
     const {name} = req.params;
     connection.query("SELECT * FROM product WHERE clothesName LIKE ?", [`%${name}%`], (err: any, results: any) => {
@@ -161,31 +163,35 @@ app.get('/cart',(req:Request,res:Response)=>{
       res.status(200).json({ products: results });
     });
   });
+  
 
 
+  app.delete('/product/:id',(req:Request,res:Response)=>{
+    connection.query('DELETE FROM product WHERE id=?',[req.params.id],(err,result)=>{
+      if(err) res.json(err);
+      res.json('deleted')
+    })
+  })
 
- 
 
-  app.put('/update/:id', (req: Request, res: Response) => {
+  app.put('/product/:id', (req: Request, res: Response) => {
     const { id } = req.params;
-    const { newName, newImage, newPrice, newCategory } = req.body;
+    const { clothesName, image, price,category} = req.body;
   
-    const updateQuery = 'UPDATE product SET clothesName = ?, image = ?, price = ?, category = ? WHERE id = ?';
-    const updateValues = [newName, newImage, newPrice, newCategory, id];
-  
+    const updateQuery = "UPDATE product SET clothesName = ?, image = ?, price = ?, category = ? WHERE id = ?";
+    const updateValues = [clothesName, image, price, category,id];
     connection.query(updateQuery, updateValues, (err: any, result: any) => {
       if (err) {
         console.error(err);
         return res.status(500).json({ message: 'Internal server error' });
       }
-  
       if (result.affectedRows === 0) {
         return res.status(404).json({ message: 'Product not found' });
       }
-  
       res.status(200).json({ message: 'Product updated successfully' });
     });
   });
+
   
   
 
@@ -196,6 +202,7 @@ app.get('/cart',(req:Request,res:Response)=>{
       res.json('deleted')
     })
   })
+
 
 
 app.listen(process.env.PORT,()=>{
