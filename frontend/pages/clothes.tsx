@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ClothesDetail from './ClothesDetail';
 import axios from 'axios';
-import * as dotenv from 'dotenv'
-dotenv.config()
+// import * as dotenv from 'dotenv'
+// dotenv.config()
 
 interface ClothingItem {
   id: number;
