@@ -5,10 +5,10 @@ import mysql from 'mysql2';
 import * as dotenv from 'dotenv'
 dotenv.config()
 const connection= mysql.createConnection({
-    host: process.env.HOST,
-    user: process.env.USER ,
+    host: "127.0.0.1",
+    user: "root",
     password: process.env.PASSWORD,
-    database: process.env.DATABASE
+    database: "zara"
 });
 
 connection.connect((err)=>{
