@@ -1,13 +1,16 @@
 
 
-import React from 'react'
+import React, { useContext } from 'react'
 import Link from 'next/link'
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import Sidebar from './Sidebar';
+import { Context } from '../Context';
 
 const NavBar = () => {
+  const {logout ,currentUser}=useContext(Context)
+  console.log(currentUser)
   return (
     <div>
       <Navbar bg="white" expand="lg" variant="light" className="navbares">
@@ -55,10 +58,11 @@ const NavBar = () => {
               SEARCH{" "}
             </Nav.Link>
 
-                  <div style={{display:"flex",justifyContent:"space-between"}}>
+                  {currentUser.id===0 && <div style={{display:"flex",justifyContent:"space-between"}}>
                     <Nav.Link href="/login" style={{ fontFamily:"Sans-serif",fontSize:"15px"}} >LOG IN</Nav.Link>
                     <Nav.Link href="/signup" style={{ fontFamily:"Sans-serif",fontSize:"15px"}} >SIGN UP</Nav.Link>
-                  </div>
+                  </div>}
+                  {currentUser.id>0 && <Nav.Link href="/" style={{ fontFamily:"Sans-serif",fontSize:"15px"}} >LOGOUT</Nav.Link>}
                   <img src="https://cdn-icons-png.flaticon.com/512/118/118089.png" style={{marginRight:"70px", marginLeft:"80px",width:"30px",height:"30px"}}/>
 
                 </Navbar.Collapse>
