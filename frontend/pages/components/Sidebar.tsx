@@ -54,13 +54,14 @@ const Sidebar: React.FC = () => {
                
                style={{color:"black",fontFamily:"Sans-serif",fontSize:"15px", marginLeft:"50px"}}
                >Women
-               </Link>
+               </Link> 
+               <li>
                <Link href="/Men"
                
                style={{color:"black",fontFamily:"Sans-serif",fontSize:"15px", marginLeft:"50px"}}
                >Men
                </Link>
-              
+               </li>
 
             </li>
             <li className='nav-item'>

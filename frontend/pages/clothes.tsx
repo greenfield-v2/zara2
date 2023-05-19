@@ -16,7 +16,7 @@ const Clothes: React.FC = () => {
   const [data, setData] = useState<ClothingItem[]>([]);
   const [count,setCount]=useState(0)
   const fetchData = () => {
-    
+
     axios.get<{ products: ClothingItem[] }>(`http://${process.env.HOST}:${process.env.PORT}/all`)
       .then(response => {
         console.log(response);
@@ -30,7 +30,7 @@ const Clothes: React.FC = () => {
   }, [count])
 
   return (
-    <div style={{ marginTop: '10px', display: 'flex', width: '100%', justifyContent: 'space-between', flexWrap: 'wrap' }}>
+    <div style={{ marginTop: '50px', display: 'flex', width: '100%', justifyContent: 'space-between', flexWrap: 'wrap' }}>
       {data.map((el, i) => (
         <ClothesDetail el={el} key={i} setCount={setCount} count={count}/>
       )).reverse()}

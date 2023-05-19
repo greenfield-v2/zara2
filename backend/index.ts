@@ -9,7 +9,7 @@ const app=express()
 app.use(cors());
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
-app.use(route)
+
 
 
 app.post('/users/signup', async (req: Request, res: Response) => {
@@ -150,12 +150,59 @@ app.get('/cart',(req:Request,res:Response)=>{
   })
 
 
+app.use(route)
+
+  app.get('/search/:name', (req: Request, res: Response) => {
+    const {name} = req.params;
+    connection.query("SELECT * FROM product WHERE clothesName LIKE ?", [`%${name}%`], (err: any, results: any) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ message: 'Internal server error' });
+      }
+  
+      res.status(200).json({ products: results });
+    });
+  });
+  
+
+
   app.delete('/product/:id',(req:Request,res:Response)=>{
     connection.query('DELETE FROM product WHERE id=?',[req.params.id],(err,result)=>{
       if(err) res.json(err);
       res.json('deleted')
     })
   })
+
+
+  app.put('/product/:id', (req: Request, res: Response) => {
+    const { id } = req.params;
+    const { clothesName, image, price,category} = req.body;
+  
+    const updateQuery = "UPDATE product SET clothesName = ?, image = ?, price = ?, category = ? WHERE id = ?";
+    const updateValues = [clothesName, image, price, category,id];
+    connection.query(updateQuery, updateValues, (err: any, result: any) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ message: 'Internal server error' });
+      }
+      if (result.affectedRows === 0) {
+        return res.status(404).json({ message: 'Product not found' });
+      }
+      res.status(200).json({ message: 'Product updated successfully' });
+    });
+  });
+
+  
+  
+
+
+  app.delete('/product/:id',(req:Request,res:Response)=>{
+    connection.query('DELETE FROM product WHERE id=?',[req.params.id],(err,result)=>{
+      if(err) res.json(err);
+      res.json('deleted')
+    })
+  })
+
 
   app.get('/cart/:id',(req:Request,res:Response)=>{
     connection.query(`SELECT * FROM cart WHERE user_id= ${req.params.id} `,(err,results:any)=>{
@@ -164,6 +211,10 @@ app.get('/cart',(req:Request,res:Response)=>{
       
     })
   })
+
+
+
+
 
   app.get('/product/:id',(req,res)=>{
     connection.query('SELECT * FROM product WHERE id=?',[req.params.id],(err,result)=>{
@@ -184,12 +235,4 @@ app.delete('/cart/:id',(req:Request,res:Response)=>{
   app.listen(process.env.PORT,()=>{
     console.log('server listen to port '+process.env.PORT)})
   
-  // process.env.PORT
-  
-  // for(var i=0;i<results.length;i++){
-  //   connection.query(`SELECT * FROM product WHERE id =  ${results[i].product_id} `,(err,result:any)=>{
-  //     if(err) res.json(err)
-  //     arr.push(...result)
-  //   })
-
-  // }
+ 

@@ -48,6 +48,7 @@ const NavBar = () => {
             <Link
               href="/Search"
               style={{
+                color:'black',
                 fontFamily: "Sans-serif",
                 fontSize: "15px",
                 marginRight: "60px",
@@ -59,10 +60,10 @@ const NavBar = () => {
             </Link>
 
                   {currentUser.id===0 && <div style={{display:"flex",justifyContent:"space-between"}}>
-                    <Link href="/login" style={{ fontFamily:"Sans-serif",fontSize:"15px"}} >LOG IN</Link>
-                    <Link href="/signup" style={{ fontFamily:"Sans-serif",fontSize:"15px" ,paddingLeft:"15px"}} >SIGN UP</Link>
+                    <Link href="/login" style={{color:'black', fontFamily:"Sans-serif",fontSize:"15px",textDecoration: "none"}} >LOG IN</Link>
+                    <Link href="/signup" style={{ color:'black',fontFamily:"Sans-serif",fontSize:"15px" ,paddingLeft:"15px",textDecoration: "none"}} >SIGN UP</Link>
                   </div>}
-                  {currentUser.id>0 && <Link href="/" style={{ fontFamily:"Sans-serif",fontSize:"15px"}} onClick={()=>logout()}>LOGOUT</Link>}
+                  {currentUser.id>0 && <Link href="/" style={{ color:'black',fontFamily:"Sans-serif",fontSize:"15px"}} onClick={()=>logout()}>LOGOUT</Link>}
                   {currentUser.isAdmin===1 && <Link href="/AddProduct" style={{ fontFamily:"Sans-serif",fontSize:"15px" ,paddingLeft:"15px"}} >Add Product</Link>}
                   <Link href="/Cart"> <img src="https://cdn-icons-png.flaticon.com/512/118/118089.png" style={{marginRight:"70px", marginLeft:"80px",width:"30px",height:"30px"}}/></Link>
 
