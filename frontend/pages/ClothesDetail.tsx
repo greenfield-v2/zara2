@@ -5,10 +5,15 @@ import Card from 'react-bootstrap/Card';
 import { Context } from './Context';
 import axios from 'axios';
 
-const ClothesDetail = ({ el }: any) => {
+const ClothesDetail = ({ el,setCount,count }: any) => {
   const { currentUser } = useContext(Context);
   const [showLogin, setShowLogin] = useState(false);
 
+
+  const remove=async()=>{
+      await axios.delete(`http://${process.env.HOST}:${process.env.PORT}/product/${el.id}`)
+      setCount(count+1)
+  }
 
   // Function to handle adding the product to the cart
   const addToCart = async () => {
@@ -39,15 +44,18 @@ const ClothesDetail = ({ el }: any) => {
     <Card style={{ width: '20rem', background: 'white', margin: '20px 10px', position: 'static' }} className='clothescard'>
       <Card.Img variant='top' src={el.image} style={{ width: '318px', height: '400px' }} />
       <Card.Body>
-        <Card.Title>{el.clothesname}</Card.Title>
-        <Card.Text></Card.Text>
-        <Button variant='primary' onClick={addToCart}>
+        <div style={{display:'flex',justifyContent:"space-between"}}>
+          <Card.Title >{el.clothesName}</Card.Title>
+          <Card.Text>{el.price}£</Card.Text>
+        </div>
+        {currentUser.id>0 && currentUser.isAdmin===0 &&<Button variant='primary' onClick={addToCart}>
           Add to Cart
-        </Button>
+        </Button>}
       </Card.Body>
-
-      {/* Display the login component when showLogin is true */}
-      {/* {showLogin && <Login />} */}
+      {currentUser.isAdmin===1 && <div>
+        <button onClick={()=>remove()}>DELETE</button>
+        <button >EDIT</button>
+      </div>}
     </Card>
   );
 };

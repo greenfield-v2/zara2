@@ -45,7 +45,7 @@ app.post('/users/login', async (req: Request, res: Response) => {
         }
         const token = jwt.sign({ id: user.id, username: user.username }, process.env.ACCESS_TOKEN);
         
-        return res.status(200).json({ token,id:user[0].id});
+        return res.status(200).json({ token,id:user[0].id,isAdmin:user[0].isAdmin});
 
     });
   } catch (error) {
@@ -149,10 +149,16 @@ app.get('/cart',(req:Request,res:Response)=>{
     })
   })
 
-const PORT = 4003
 
-app.listen(PORT,()=>{
-    console.log('server listen to port '+PORT)
+  app.delete('/product/:id',(req:Request,res:Response)=>{
+    connection.query('DELETE FROM product WHERE id=?',[req.params.id],(err,result)=>{
+      if(err) res.json(err);
+      res.json('deleted')
+    })
+  })
+
+app.listen(process.env.PORT,()=>{
+    console.log('server listen to port '+process.env.PORT)
 
 
 })

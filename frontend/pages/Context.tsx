@@ -4,6 +4,7 @@ import React, { createContext, useState, Dispatch ,SetStateAction} from 'react';
 export type User ={
     id:number
     token:string
+    isAdmin:number
   }
 
 export interface userContextInterface {
@@ -18,12 +19,14 @@ type UserProvideProps={
 export default function ContextProvider ({children}:UserProvideProps) {
   const [currentUser,setCurrentUser]=useState<User>({
     id:0,
-    token:''
+    token:'',
+    isAdmin:0
   })
   const logout=()=>{
     setCurrentUser({
       id:0,
-      token:''
+      token:'',
+      isAdmin:0
     })
   }
   return (
