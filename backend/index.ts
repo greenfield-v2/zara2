@@ -163,30 +163,6 @@ app.use(route)
       res.status(200).json({ products: results });
     });
   });
-
-
-
- 
-
-  app.put('/update', (req: Request, res: Response) => {
-    const { currentName, newName, newImage, newPrice, newCategory } = req.body;
-  
-    const updateQuery = 'UPDATE product SET clothesName = ?, image = ?, price = ?, category = ? WHERE clothesName = ?';
-    const updateValues = [newName, newImage, newPrice, newCategory, currentName];
-  
-    connection.query(updateQuery, updateValues, (err: any, result: any) => {
-      if (err) {
-        console.error(err);
-        return res.status(500).json({ message: 'Internal server error' });
-      }
-  
-      if (result.affectedRows === 0) {
-        return res.status(404).json({ message: 'Product not found' });
-      }
-  
-      res.status(200).json({ message: 'Product updated successfully' });
-    });
-  });
   
 
 
@@ -197,6 +173,24 @@ app.use(route)
     })
   })
 
+  app.put('/product/:id', (req: Request, res: Response) => {
+    const { id } = req.params;
+    const { clothesName, image, price,category} = req.body;
+  
+    const updateQuery = "UPDATE product SET clothesName = ?, image = ?, price = ?, category = ? WHERE id = ?";
+    const updateValues = [clothesName, image, price, category,id];
+  
+    connection.query(updateQuery, updateValues, (err: any, result: any) => {
+      if (err) {
+        console.error(err);
+        return res.status(500).json({ message: 'Internal server error' });
+      }
+      if (result.affectedRows === 0) {
+        return res.status(404).json({ message: 'Product not found' });
+      }
+      res.status(200).json({ message: 'Product updated successfully' });
+    });
+  });
 
 
 app.listen(process.env.PORT,()=>{
