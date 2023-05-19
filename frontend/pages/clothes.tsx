@@ -12,10 +12,12 @@ interface ClothingItem {
 }
 
 const Clothes: React.FC = () => {
+  
   const [data, setData] = useState<ClothingItem[]>([]);
+  const [count,setCount]=useState(0)
   const fetchData = () => {
     
-    axios.get<{ products: ClothingItem[] }>(`http://localhost:4003/all`)
+    axios.get<{ products: ClothingItem[] }>(`http://${process.env.HOST}:${process.env.PORT}/all`)
       .then(response => {
         console.log(response);
         setData(response.data.products);
@@ -25,12 +27,12 @@ const Clothes: React.FC = () => {
 
   useEffect(() => {
     fetchData()
-  }, [])
+  }, [count])
 
   return (
     <div style={{ marginTop: '10px', display: 'flex', width: '100%', justifyContent: 'space-between', flexWrap: 'wrap' }}>
       {data.map((el, i) => (
-        <ClothesDetail el={el} key={i} />
+        <ClothesDetail el={el} key={i} setCount={setCount} count={count}/>
       )).reverse()}
     </div>
   );
