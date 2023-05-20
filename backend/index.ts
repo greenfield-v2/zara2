@@ -196,13 +196,7 @@ app.use(route)
   
 
 
-  app.delete('/product/:id',(req:Request,res:Response)=>{
-    connection.query('DELETE FROM product WHERE id=?',[req.params.id],(err,result)=>{
-      if(err) res.json(err);
-      res.json('deleted')
-    })
-  })
-
+ 
 
   app.get('/cart/:id',(req:Request,res:Response)=>{
     connection.query(`SELECT * FROM cart WHERE user_id= ${req.params.id} `,(err,results:any)=>{
@@ -231,8 +225,15 @@ app.delete('/cart/:id',(req:Request,res:Response)=>{
   })
 })
 
+app.delete('/users/remove/:id',(req:Request,res:Response)=>{
+  connection.query('DELETE FROM user WHERE id=?',[req.params.id],(err,result)=>{
+    if(err) res.json(err);
+    res.json('deleted')
+  })
+})
 
-  app.listen(process.env.PORT,()=>{
+
+app.listen(process.env.PORT,()=>{
     console.log('server listen to port '+process.env.PORT)})
   
  

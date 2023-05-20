@@ -15,7 +15,7 @@ const Sidebar: React.FC = () => {
         src="https://icon-library.com/images/sidebar-icon/sidebar-icon-16.jpg"
 
         style={{marginLeft: "30px", width: "30px", height: "30px" }}
-
+  
         alt="Toggle Sidebar"
         onClick={toggleSidebar}
       />
