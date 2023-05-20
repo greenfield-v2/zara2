@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/router';
+import styles from '../../styles/add.module.css'
 
 const AddProduct = () => {
     const router=useRouter();
@@ -23,8 +24,10 @@ const AddProduct = () => {
         router.push('/clothes')
     }
     return (
-    <div>
+    <div className={styles.container}>
+        <div className={styles['add-form']}> 
       <input
+      className={styles['input-name']} 
         type='text' 
         placeholder='Clothes Name'
         name='clothesName'
@@ -32,27 +35,33 @@ const AddProduct = () => {
         onChange={handleChange}
       /><br/>
       <input 
+      className={styles['input-price']} 
         type='number'
-        placeholder='price'
+        placeholder='Price'
         name='price'
         value={product.price}
         onChange={handleChange}
       /><br/>
       <input
+      className={styles['input-image']} 
         type='text' 
-        placeholder='image'
+        placeholder='Image'
         name='image'
         value={product.image}
         onChange={handleChange}
       /><br/>
       <input 
+      className={styles['input-category']} 
         type='text'
-        placeholder='category'
+        placeholder='Category'
         name='category'
         value={product.category}
         onChange={handleChange}
       /><br/>
-      <button onClick={()=>add()}>Add Product</button>
+      <button
+      className={styles['button-add']} 
+       onClick={()=>add()}>Add Product</button>
+       </div>
     </div>
     )
 }
