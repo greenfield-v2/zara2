@@ -1,25 +1,16 @@
+import user  from '../model/user';
+import { Request,Response } from 'express';
 
-import x  from '../model/user';
-
-
-const getAllUsers=(req,res)=>{
-    x.getAll((err,result)=>{
+const getAllUsers=(req:Request,res:Response)=>{
+    user.getAll((err,result)=>{
         if(err) res.json(err);
         res.json(result)
     })
 }
 
-
-const searchUsers = (req, res) => {
-    const searchTerm = req.query.q; // Retrieve the search query from the URL query parameter 'q'
-  
-    x.user(searchTerm, (err, results) => {
-      if (err) {
-        console.error('Error searching users:', err);
-        res.status(500).json({ error: 'Internal Server Error' });
-      } else {
-        res.json(results);
-      }
-    });
-  };
-export default {getAllUsers,searchUsers};
+  const removeUser=(req:Request,res:Response)=>{
+    user.remove(req.params.id,(err,result)=>{
+      if(err) res.json(err);
+      res.json('deleted')})
+  }
+export default {getAllUsers,removeUser};

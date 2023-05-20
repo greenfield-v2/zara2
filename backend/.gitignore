@@ -1,7 +1,4 @@
 
-
-
-/node_modules
-/package-lock.json
-/.env
-/database/db.ts
+node_modules
+package-lock.json
+.env

@@ -1,17 +1,13 @@
 import connection from "../database/db";
-// const connection=require('../database/db')
+
 const getAll=(callback)=>{
     connection.query("SELECT * FROM user",callback)
 }
 
-const user = (searchTerm, callback) => {
-    const sqlQuery = 'SELECT * FROM product WHERE clothesName LIKE ?';
-    const searchValue = `%${searchTerm}%`;
-  
-    connection.query(sqlQuery, [searchValue], callback);
-  };
-  
+const remove=(values,callback)=>{
+  connection.query('DELETE FROM user WHERE id=?',values,callback)
+}
 
 
-export default {getAll,user} ;
+export default {getAll,remove} ;
 

@@ -1,10 +1,10 @@
-import y from '../controller/userController';
+import user from '../controller/userController';
 import express from 'express'
 
-const route=express.Router();
+const routeUser=express.Router();
 
-route.get('/users',y.getAllUsers)
-route.get('/users/search', y.searchUsers);
+routeUser.get('/users',user.getAllUsers)
 
+routeUser.delete('/users/remove/:id',user.removeUser)
 
-export default route
+export default routeUser
