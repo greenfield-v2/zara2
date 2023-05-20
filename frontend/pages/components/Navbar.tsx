@@ -16,7 +16,7 @@ const NavBar = () => {
       <Navbar bg="white" expand="lg" variant="light" className="navbares">
         <Sidebar />
         <Container fluid>
-          <Navbar.Brand href="#">
+          <Navbar.Brand >
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Zara_Logo.svg/2560px-Zara_Logo.svg.png"
               style={{ marginLeft: "100px", width: "200px", height: "90px" }}
@@ -38,6 +38,7 @@ const NavBar = () => {
                   fontFamily: "Sans-serif",
                   fontSize: "15px",
                   marginLeft: "50px",
+                  textDecoration: "none"
                 }}
               >
                 {" "}
@@ -48,10 +49,11 @@ const NavBar = () => {
             <Link
               href="/Search"
               style={{
+                color:'black',
                 fontFamily: "Sans-serif",
                 fontSize: "15px",
                 marginRight: "60px",
-                textDecoration: "underline",
+                textDecoration: "none",
               }}
             >
               {" "}
@@ -59,13 +61,13 @@ const NavBar = () => {
             </Link>
 
                   {currentUser.id===0 && <div style={{display:"flex",justifyContent:"space-between"}}>
-                    <Link href="/login" style={{ fontFamily:"Sans-serif",fontSize:"15px"}} >LOG IN</Link>
-                    <Link href="/signup" style={{ fontFamily:"Sans-serif",fontSize:"15px" ,paddingLeft:"15px"}} >SIGN UP</Link>
+                    <Link href="/login" style={{color:'black', fontFamily:"Sans-serif",fontSize:"15px",textDecoration: "none"}} >LOG IN</Link>
+                    <Link href="/signup" style={{ color:'black',fontFamily:"Sans-serif",fontSize:"15px" ,paddingLeft:"15px",textDecoration: "none"}} >SIGN UP</Link>
                   </div>}
-                  {currentUser.id>0 && <Link href="/" style={{ fontFamily:"Sans-serif",fontSize:"15px"}} onClick={()=>logout()}>LOGOUT</Link>}
-                  {currentUser.isAdmin===1 && <Link href="/AddProduct" style={{ fontFamily:"Sans-serif",fontSize:"15px" ,paddingLeft:"15px"}} >Add Product</Link>}
-                  <img src="https://cdn-icons-png.flaticon.com/512/118/118089.png" style={{marginRight:"70px", marginLeft:"80px",width:"30px",height:"30px"}}/>
-
+                  {currentUser.id>0 && <Link href="/" style={{ color:'black',fontFamily:"Sans-serif",fontSize:"15px" ,textDecoration: "none"}} onClick={()=>logout()}>LOGOUT</Link>}
+                  {currentUser.isAdmin===1 && <Link href="/AddProduct" style={{ fontFamily:"Sans-serif",fontSize:"15px" ,paddingLeft:"15px",textDecoration: "none", color:"black"}} >Add Product</Link>}
+                  {currentUser.id>0 && currentUser.isAdmin===0 && <Link href="/Cart"> <img src="https://cdn-icons-png.flaticon.com/512/118/118089.png" style={{marginRight:"70px", marginLeft:"80px",width:"30px",height:"30px"}}/></Link>}
+                  {currentUser.id>0 && currentUser.isAdmin===1 && <Link href='/users' style={{ fontFamily:"Sans-serif",fontSize:"17px" ,paddingLeft:"15px", textDecoration: "none",color:"black"}} >Admin Dashboard</Link>}
                 </Navbar.Collapse>
               </Container>
             </Navbar>

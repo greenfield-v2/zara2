@@ -15,7 +15,7 @@ const Sidebar: React.FC = () => {
         src="https://icon-library.com/images/sidebar-icon/sidebar-icon-16.jpg"
 
         style={{marginLeft: "30px", width: "30px", height: "30px" }}
-
+  
         alt="Toggle Sidebar"
         onClick={toggleSidebar}
       />
@@ -54,13 +54,14 @@ const Sidebar: React.FC = () => {
                
                style={{color:"black",fontFamily:"Sans-serif",fontSize:"15px", marginLeft:"50px"}}
                >Women
-               </Link>
+               </Link> 
+               <li>
                <Link href="/Men"
                
                style={{color:"black",fontFamily:"Sans-serif",fontSize:"15px", marginLeft:"50px"}}
                >Men
                </Link>
-              
+               </li>
 
             </li>
             <li className='nav-item'>

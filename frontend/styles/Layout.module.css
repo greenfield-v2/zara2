@@ -15,11 +15,12 @@
   flex-wrap: wrap;
 }
 .clothescard{
+
   max-width: 350px;
   min-width: 150px;
   max-height: 700px;
   min-height: 270px;
-  box-shadow: 10px 5px 5px rgb(128, 50, 50);
+  box-shadow: 10px 5px 5px rgb(173, 169, 169);
   transition: all 0.3s ease;
 }
 

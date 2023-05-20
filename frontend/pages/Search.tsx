@@ -59,10 +59,8 @@ const SearchPage: React.FC = () => {
     >
       {data.map((el) => (
         <ClothesDetail el={el} key={el.id} />
-      ))}
-
-      
-    </div>
+      ))}  
+      </div>
     </div>
   );
 };
