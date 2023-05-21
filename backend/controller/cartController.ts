@@ -32,10 +32,17 @@ const remove=(req:Request,res:Response)=>{
       })
 }
 
+const removeCartOfUser=(req:Request,res:Response)=>{
+    cart.removeByUser([Number(req.params.id)],(err,result)=>{
+        if(err) res.json(err);
+        res.json('deleted')
+      })
+}
 
 export default {
     allCarts,
     cartForUser,
     toCart,
-    remove
+    remove,
+    removeCartOfUser
 }

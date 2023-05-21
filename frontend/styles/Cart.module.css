@@ -1,0 +1,14 @@
+.btn{
+    margin-top: 10%;
+    margin-left: 40%;
+    text-align: center;
+    height: 20vh;
+    box-shadow: 3px 3px rgb(255, 254, 254), -1em 0 0.4em rgb(142, 142, 138);
+}
+
+.pr{
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 3px 3px rgb(255, 254, 254), -1em 0 0.4em rgb(142, 142, 138);
+}

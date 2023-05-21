@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import axios from 'axios'
 import { useRouter } from 'next/router';
-import styles from '../../styles/add.module.css'
+import styles from '../styles/addProduct.module.css'
 
 const AddProduct = () => {
     const router=useRouter();
@@ -58,6 +58,8 @@ const AddProduct = () => {
         value={product.category}
         onChange={handleChange}
       /><br/>
+      <br/>
+      <br/>
       <button
       className={styles['button-add']} 
        onClick={()=>add()}>Add Product</button>
