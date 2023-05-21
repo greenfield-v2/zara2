@@ -62,6 +62,7 @@ const ClothesDetail = ({ el, setCount, count }: any) => {
   const update = async () => {
     try {
       await axios.put(`http://${process.env.HOST}:${process.env.PORT}/product/${el.id}`, updatedProduct);
+      setCount(count+1)
       handleClose();
       router.push('/clothes');
     } catch (error) {
