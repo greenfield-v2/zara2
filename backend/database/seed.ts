@@ -2,7 +2,7 @@ const allProducts=require('../../frontend/data/data.json')
 import connection from './db';
 
 const rows=(arr)=>{
-    const array=arr.map(e=>`("${e.clothesName}","${e.image}","${e.price}","${e.category}")`);
+    const array=arr.map(e=>`("${e.clothesName}","${e.image}",${e.price},"${e.category}")`);
     return array.join()
 }
 const insertMany=()=>{

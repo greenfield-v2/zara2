@@ -62,7 +62,7 @@ const AddUserPage = () => {
           <label htmlFor="confPassword" className={styles.label}>Confirm Password</label>
           <input type="password" id="confPassword" value={confPassword} onChange={handleConfPasswordChange} className={styles['input-password']} required />
         </div>
-        <button className={styles['signup-button']} onClick={handleSubmit}>Add User</button>
+        <button className={styles['signup-button']} onClick={handleSubmit}>Sign-up</button>
       </div>
     </div>
     );

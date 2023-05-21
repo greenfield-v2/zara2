@@ -15,9 +15,14 @@ const addCart=(values,callback)=>{
 const removeCart=(values,callback)=>{
     connection.query('DELETE FROM cart WHERE product_id=?',values,callback)
 }
+
+const removeByUser=(values,callback)=>{
+    connection.query('DELETE FROM cart WHERE user_id=?',values,callback)
+}
 export default {
     getAllCarts,
     getCartsOfUser,
     removeCart,
-    addCart
+    addCart,
+    removeByUser
 }

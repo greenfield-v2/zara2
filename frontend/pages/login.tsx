@@ -73,7 +73,7 @@ const Login = () => {
 
   return (
     <div style={containerStyle}>
-      <h2 style={headingStyle}>Login</h2>
+      <h2 style={headingStyle}>Sign In</h2>
       <div style={formGroupStyle}>
         <label htmlFor="username" style={labelStyle}>Username:</label>
         <input type="email" id="email" value={username} onChange={e => setUsername(e.target.value)} style={inputStyle} required />
@@ -82,7 +82,7 @@ const Login = () => {
         <label htmlFor="password" style={labelStyle}>Password:</label>
         <input type="password" id="password" value={password} onChange={e => setPassword(e.target.value)} style={inputStyle} required />
       </div>
-      <button onClick={login} style={buttonStyle}>Login</button>
+      <button onClick={login} style={buttonStyle}>Submit</button>
     </div>
   );
 };

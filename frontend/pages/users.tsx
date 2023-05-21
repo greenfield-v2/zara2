@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import styles from '../styles/users.module.css'
+
 const Users:React.FC=()=>{
     const [users,setUsers]=useState<any>([])
     const [count ,setCount]=useState<number>(0)
@@ -16,7 +17,11 @@ const Users:React.FC=()=>{
         setUsers(res.data)
     }
 
+    const removeCart=async(id:number)=>{
+        await axios.delete(`http://${process.env.HOST}:${process.env.PORT}/userCart/${id}`)
+    }
     const removeUser=async(id:number)=>{
+        removeCart(id)
         await axios.delete(`http://${process.env.HOST}:${process.env.PORT}/users/remove/${id}`)
         setCount(count+1)
     }
@@ -25,19 +30,20 @@ const Users:React.FC=()=>{
     },[count])
     return (<div className={styles.admin}>
         {users.map((user,i)=>{
-        return (
-                <div key={i} className={styles.infouser}>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png" alt="profile" className={styles.img}/>
-                    <div className={styles.rs}>
-                        <div className={styles.info}>
-                            <h4>{user.username}</h4>
-                            <p>{user.email}</p>
+            return (<div>
+                {user.isAdmin===0 && <div key={i} className={styles.infouser}>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png" alt="profile" className={styles.img}/>
+                        <div className={styles.rs}>
+                            <div className={styles.info}>
+                                <h4>{user.username}</h4>
+                                <p>{user.email}</p>
+                            </div>
+                            <button className={styles.btn} onClick={()=>removeUser(user.id)}>remove</button>   
                         </div>
-                        <button className={styles.btn} onClick={()=>removeUser(user.id)}>remove</button>   
-                    </div>
-                    <hr />
-                </div>
-        )})
+                        <hr />
+                    </div>}
+            </div>       
+            )})
     }
     </div> )
             

@@ -9,7 +9,7 @@ const getAllUsers=(req:Request,res:Response)=>{
 }
 
   const removeUser=(req:Request,res:Response)=>{
-    user.remove(req.params.id,(err,result)=>{
+    user.remove([Number(req.params.id)],(err,result)=>{
       if(err) res.json(err);
       res.json('deleted')})
   }

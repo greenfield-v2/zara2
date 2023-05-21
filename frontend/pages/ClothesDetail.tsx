@@ -5,7 +5,6 @@ import Card from 'react-bootstrap/Card';
 import { Context } from './Context';
 import axios from 'axios';
 import styles from '../styles/Layout.module.css';
-import Link from 'next/link';
 import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { useRouter } from 'next/router';

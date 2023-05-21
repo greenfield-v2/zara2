@@ -10,5 +10,6 @@ routeCart.post('/cart',cart.toCart)
 
 routeCart.delete('/cart/:id',cart.remove)
 
+routeCart.delete('/userCart/:id',cart.removeCartOfUser)
 
 export default routeCart;
